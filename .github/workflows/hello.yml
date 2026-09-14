@@ -1,1 +1,10 @@
 
+name: Meu primeiro CI/CD
+
+on: push
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Minha primeira pipeline!"
