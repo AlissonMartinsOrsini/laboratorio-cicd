@@ -23,3 +23,5 @@ jobs:
       - run: python -m pytest
 
       - run: docker build -t laboratorio-cicd .
+
+      - run: docker run --rm laboratorio-cicd
