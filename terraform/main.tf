@@ -20,9 +20,14 @@ module "container" {
   source = "./modules/container"
   nome_container = "${terraform.workspace}-laboratorio-cicd"
   memoria = terraform.workspace == "prod" ? 1024 : 512
-
 }
 
 output "container_id" {
   value = module.container.container_id
+}
+
+module "container_teste" {
+  source = "./modules/container"
+  nome_container = "${terraform.workspace}-laboratorio-cicd-teste"
+  memoria        = 256
 }

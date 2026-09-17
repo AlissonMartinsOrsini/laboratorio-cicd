@@ -3,6 +3,8 @@ name: Python CI
 on: push
 
 jobs:
+  reusable:
+    uses: ./.github/workflows/reusable.yml
   test:
     strategy:
       fail-fast: false
