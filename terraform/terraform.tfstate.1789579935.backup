@@ -1,39 +1,11 @@
 {
   "version": 4,
   "terraform_version": "1.16.2",
-  "serial": 13,
+  "serial": 3,
   "lineage": "1a4cf464-a2e4-8830-d9d7-33a3797c6f48",
   "outputs": {},
   "resources": [
     {
-      "mode": "managed",
-      "type": "docker_image",
-      "name": "app",
-      "provider": "provider[\"registry.terraform.io/kreuzwerker/docker\"]",
-      "instances": [
-        {
-          "schema_version": 0,
-          "attributes": {
-            "build": [],
-            "force_remove": null,
-            "id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184eapython:3.12-slim",
-            "image_id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
-            "keep_locally": null,
-            "name": "python:3.12-slim",
-            "platform": null,
-            "pull_triggers": null,
-            "repo_digest": "python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
-            "timeouts": null,
-            "triggers": null
-          },
-          "sensitive_attributes": [],
-          "identity_schema_version": 0,
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
-        }
-      ]
-    },
-    {
-      "module": "module.container",
       "mode": "managed",
       "type": "docker_container",
       "name": "app",
@@ -71,14 +43,14 @@
             "domainname": "",
             "entrypoint": [],
             "env": [],
-            "exit_code": 0,
+            "exit_code": null,
             "gpus": null,
             "group_add": null,
             "healthcheck": null,
             "host": [],
-            "hostname": "2db250d1db21",
-            "id": "2db250d1db21b9d202c890805c5e573a523179d025c8fb479b2d2545d76be9ed",
-            "image": "python:3.12-slim",
+            "hostname": "e6d32ffdb75b",
+            "id": "e6d32ffdb75b10ddda6505be7799d5f004cfa8799fb728a0fb346338d6bdfff0",
+            "image": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
             "init": false,
             "ipc_mode": "private",
             "labels": [],
@@ -86,21 +58,21 @@
             "log_opts": null,
             "logs": false,
             "max_retry_count": 0,
-            "memory": 536870912,
+            "memory": 0,
             "memory_reservation": 0,
-            "memory_swap": 536870912,
+            "memory_swap": 0,
             "mounts": [],
-            "must_run": false,
+            "must_run": true,
             "name": "laboratorio-cicd",
             "network_data": [
               {
-                "gateway": "",
+                "gateway": "172.17.0.1",
                 "global_ipv6_address": "",
                 "global_ipv6_prefix_length": 0,
-                "ip_address": "",
-                "ip_prefix_length": 0,
+                "ip_address": "172.17.0.2",
+                "ip_prefix_length": 16,
                 "ipv6_gateway": "",
-                "mac_address": "",
+                "mac_address": "b2:b3:e4:a0:ba:27",
                 "network_name": "bridge"
               }
             ],
@@ -138,7 +110,37 @@
           },
           "sensitive_attributes": [],
           "identity_schema_version": 0,
-          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9"
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "docker_image.app"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "docker_image",
+      "name": "app",
+      "provider": "provider[\"registry.terraform.io/kreuzwerker/docker\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "build": [],
+            "force_remove": null,
+            "id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184eapython:3.12-slim",
+            "image_id": "sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+            "keep_locally": null,
+            "name": "python:3.12-slim",
+            "platform": null,
+            "pull_triggers": null,
+            "repo_digest": "python@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea",
+            "timeouts": null,
+            "triggers": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
         }
       ]
     }

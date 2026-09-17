@@ -16,7 +16,13 @@ resource "docker_image" "app" {
   name = "python:3.12-slim"
 }
 
-resource "docker_container" "app" {
-  name  = "laboratorio-cicd"
-  image = docker_image.app.image_id
+module "container" {
+  source = "./modules/container"
+  nome_container = "${terraform.workspace}-laboratorio-cicd"
+  memoria = terraform.workspace == "prod" ? 1024 : 512
+
+}
+
+output "container_id" {
+  value = module.container.container_id
 }
