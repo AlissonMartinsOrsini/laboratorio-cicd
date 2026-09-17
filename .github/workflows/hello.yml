@@ -5,6 +5,8 @@ on: push
 jobs:
   reusable:
     uses: ./.github/workflows/reusable.yml
+    with:
+      projeto: laboratorio-cicd
   test:
     strategy:
       fail-fast: false
