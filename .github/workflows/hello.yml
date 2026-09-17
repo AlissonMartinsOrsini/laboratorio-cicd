@@ -7,6 +7,12 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       projeto: laboratorio-cicd
+
+  outro-job:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      projeto: gptchatomastameajudando
+      
   test:
     strategy:
       fail-fast: false
