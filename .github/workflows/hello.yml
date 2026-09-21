@@ -8,10 +8,17 @@ jobs:
     with:
       projeto: laboratorio-cicd
 
+  mostrar-resultado:
+    needs: reusable
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "${{ needs.reusable.outputs.resultado }}"
+
   outro-job:
     uses: ./.github/workflows/reusable.yml
     with:
-      projeto: gptchatomastameajudando
+      projeto: teste 2
       
   test:
     strategy:

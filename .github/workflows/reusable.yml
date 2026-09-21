@@ -7,9 +7,20 @@ on:
         type: string
         required: true
 
+    outputs:
+      resultado:
+        description: "Resultado da execução"
+        value: ${{ jobs.exemplo.outputs.resultado }}
+
 jobs:
   exemplo:
     runs-on: ubuntu-latest
 
+    outputs:
+      resultado: ${{ steps.resultado.outputs.mensagem }}
+
     steps:
+      - id: resultado
+        run: echo "mensagem=Pipeline executada com sucesso" >> "$GITHUB_OUTPUT"
+
       - run: echo "Projeto - ${{ inputs.projeto }}"
