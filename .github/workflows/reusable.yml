@@ -6,6 +6,10 @@ on:
       projeto:
         type: string
         required: true
+      ambiente:
+        type: string
+        required: true
+        
 
     outputs:
       resultado:
@@ -24,3 +28,5 @@ jobs:
         run: echo "mensagem=Pipeline executada com sucesso" >> "$GITHUB_OUTPUT"
 
       - run: echo "Projeto - ${{ inputs.projeto }}"
+
+      - run: echo "Ambiente - ${{ inputs.ambiente }}"
