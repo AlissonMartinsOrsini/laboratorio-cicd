@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: laboratorio-cicd
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: laboratorio-cicd
+
+  template:
+      metadata:
+        labels:
+          app: laboratorio-cicd
+      spec:
+        containers:
+          - name: laboratorio-cicd
+            image: nginx:alpine
