@@ -5,8 +5,7 @@ metadata:
   name: laboratorio-cicd
 
 spec:
-  replicas: 2
-
+  replicas: 4
   selector:
     matchLabels:
       app: laboratorio-cicd
