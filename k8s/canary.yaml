@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: laboratorio-cicd-canary
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: laboratorio-cicd
+      version: canary
+
+  template:
+    metadata:
+      labels:
+        app: laboratorio-cicd
+        version: canary
+
+    spec:
+      containers:
+        - name: laboratorio-cicd-canary
+          image: nginx:alpine
+          command:
+            - sh
+            - -c
+            - echo "VERSAO CANARY" > /usr/share/nginx/html/index.html && nginx -g "daemon off;"

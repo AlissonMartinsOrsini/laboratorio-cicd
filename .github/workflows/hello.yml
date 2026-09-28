@@ -68,3 +68,33 @@ jobs:
         - uses: hashicorp/setup-terraform@v4
         - run: terraform init
           working-directory: terraform
+
+  ai:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Analisar alterações
+        run: |
+          echo "Analisando alterações..."
+
+          arquivos=$(git diff --name-only HEAD^ HEAD)
+
+          echo "Arquivos alterados:"
+          echo "$arquivos"
+
+          if echo "$arquivos" | grep -q "^app.py$"; then
+            if ! echo "$arquivos" | grep -q "^tests/"; then
+              echo "Possível problema: app.py foi alterado, mas nenhum teste foi alterado."
+              echo "Sugestão: revise ou crie testes para essa alteração."
+            else
+              echo "Código e testes foram alterados."
+            fi
+          else
+            echo "Nenhuma alteração detectada em app.py."
+          fi
