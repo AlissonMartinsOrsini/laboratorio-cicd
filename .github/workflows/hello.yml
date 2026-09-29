@@ -118,3 +118,24 @@ jobs:
           else
             echo "Histórico com poucas falhas."
           fi
+
+  pokanomalia:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Detectar anomalia
+        run: |
+          maior=$(sort -nr metricas.txt | head -n 1)
+
+          echo "Maior métrica: $maior"
+
+          if [ "$maior" -ge 80 ]; then
+            echo "Alerta: anomalia detectada!"
+            echo "Resposta: incidente precisa ser analisado."
+          else
+            echo "Nenhuma anomalia detectada."
+          fi
