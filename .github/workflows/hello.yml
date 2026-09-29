@@ -98,3 +98,23 @@ jobs:
           else
             echo "Nenhuma alteração detectada em app.py."
           fi
+  previsao-falha:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Analisar histórico
+        run: |
+          echo "Analisando histórico de pipelines..."
+          falhas=$(grep -c "falha" historico_pipeline.txt)
+
+          echo "Número de falhas: $falhas"
+
+          if [ "$falhas" -ge 2 ]; then
+            echo "Alerta: existe histórico de falhas. Risco de nova falha."
+          else
+            echo "Histórico com poucas falhas."
+          fi
